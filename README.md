@@ -24,7 +24,7 @@ Avoid binding to the same class in both your CSS and JavaScript. Conflating the 
 Use JavaScript-specific classes to bind to, prefixed with `.js-`:
 
 ```html
-<button class="btn btn-primary js-request-to-book">Request to Book</button>
+<button class="button -primary js-request-to-book">Request to Book</button>
 ```
 
 
@@ -36,8 +36,8 @@ Use JavaScript-specific classes to bind to, prefixed with `.js-`:
 
 ```scss
 .page-container {
-  .content {
-    .profile {
+  .-content {
+    .-avatar {
       // STOP!
     }
   }
