@@ -1,5 +1,7 @@
 # CSS/HTML Styleguide
 
+Initial pieces ganked from [Airbnb CSS Styleguide](https://github.com/airbnb/css)
+
 - Sections, components, atoms, modifiers
 
 ## CSS
@@ -14,3 +16,38 @@
 - avoid @extends because they create unnecessary bloat.
 
 - Use mixing wherever needed but not to the point of overcomplicating/obfuscating the code
+
+### JavaScript hooks
+
+Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
+
+Use JavaScript-specific classes to bind to, prefixed with `.js-`:
+
+```html
+<button class="btn btn-primary js-request-to-book">Request to Book</button>
+```
+
+
+### Nested selectors
+
+**Do not nest selectors more than three levels deep!**
+
+- Nested selectors should be succinct. If they get too complex look into making a mixin or breaking them out into a component.
+
+```scss
+.page-container {
+  .content {
+    .profile {
+      // STOP!
+    }
+  }
+}
+```
+
+### Variables
+
+Prefer dash-cased variable names (e.g. `$my-variable`) over camelCased or snake_cased variable names. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`). Keep variable names semantic, (e.g. `$color-blue`, `$nav-z`, `breakpoint-mobile`).
+
+### Mixins
+
+Mixins should be used to DRY up your code, add clarity, or abstract complexity--in much the same way as well-named functions. Mixins that accept no arguments can be useful for this, but note that if you are not compressing your payload (e.g. gzip), this may contribute to unnecessary code duplication in the resulting styles.
